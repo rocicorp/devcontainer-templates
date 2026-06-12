@@ -1,0 +1,32 @@
+{
+  "id": "sibling-services",
+  "version": "1.0.0",
+  "name": "Rocicorp Node workspace + sibling Compose services",
+  "description": "Node.js dev container that runs the repo's existing docker-compose services (e.g. Postgres) as sibling containers. The workspace reaches them over the Compose network by service name but has no Docker daemon and no host Docker socket.",
+  "documentationURL": "https://github.com/rocicorp/devcontainer-templates/tree/main/src/sibling-services",
+  "publisher": "Rocicorp",
+  "platforms": ["Node"],
+  "options": {
+    "appName": {
+      "type": "string",
+      "description": "Workspace folder name, typically the repo name (mounted at /workspaces/<appName>).",
+      "default": "app"
+    },
+    "nodeVersion": {
+      "type": "string",
+      "description": "Node.js major version for the workspace image.",
+      "proposals": ["24", "22", "20"],
+      "default": "24"
+    },
+    "servicesComposeFile": {
+      "type": "string",
+      "description": "Repo-relative path to the existing Compose file that defines the local services.",
+      "default": "docker/docker-compose.yml"
+    },
+    "dbService": {
+      "type": "string",
+      "description": "Name of the database service in that Compose file (used for depends_on).",
+      "default": "postgres"
+    }
+  }
+}

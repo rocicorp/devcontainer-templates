@@ -1,0 +1,20 @@
+// Rocicorp dev container (no services).
+//
+// Security invariant: the dev container is the sandbox for development and
+// AI-agent work. It must not be able to create or control containers — no
+// Docker-in-Docker, no host Docker socket. If the repo needs local services
+// (e.g. Postgres), use the `sibling-services` template instead:
+// https://github.com/rocicorp/devcontainer-templates
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:${templateOption:nodeVersion}",
+  "remoteUser": "node",
+  "features": {
+    // Shared rocicorp features (https://github.com/rocicorp/devcontainer-features):
+    //  - agents: Codex (pinned) + Claude Code + gh; persists logins across rebuilds.
+    //  - pnpm: corepack-managed pnpm; removes npm/npx to enforce pnpm.
+    "ghcr.io/rocicorp/devcontainer-features/agents:1": {},
+    "ghcr.io/rocicorp/devcontainer-features/pnpm:1": {}
+  },
+  "postCreateCommand": "pnpm install"
+}

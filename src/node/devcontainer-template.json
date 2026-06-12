@@ -1,0 +1,17 @@
+{
+  "id": "node",
+  "version": "1.0.0",
+  "name": "Rocicorp Node workspace",
+  "description": "Lightweight Node.js dev container for Rocicorp repos: pnpm + agent tooling, no Docker daemon, no host Docker socket.",
+  "documentationURL": "https://github.com/rocicorp/devcontainer-templates/tree/main/src/node",
+  "publisher": "Rocicorp",
+  "platforms": ["Node"],
+  "options": {
+    "nodeVersion": {
+      "type": "string",
+      "description": "Node.js major version for the workspace image.",
+      "proposals": ["24", "22", "20"],
+      "default": "24"
+    }
+  }
+}

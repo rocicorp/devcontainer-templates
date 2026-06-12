@@ -1,0 +1,32 @@
+# Dev workspace service. The repo's own Compose file (pulled in via
+# `include:`) provides the sibling services; this file only adds the
+# workspace and wires it to them.
+#
+# `include:` (not devcontainer.json's dockerComposeFile merging) is what
+# keeps relative paths inside the repo's Compose file resolving against
+# that file's own directory. Requires Docker Compose v2.20+.
+#
+# Inside the workspace, reach services by Compose service name, never
+# localhost — localhost is the workspace itself. Published ports in the
+# repo's Compose file still work from the host.
+
+include:
+  - ../${templateOption:servicesComposeFile}
+
+services:
+  dev:
+    image: mcr.microsoft.com/devcontainers/javascript-node:${templateOption:nodeVersion}
+    command: sleep infinity
+    volumes:
+      - ..:/workspaces/${templateOption:appName}:cached
+    environment:
+      # Point the app at the sibling services by service name. Adjust the
+      # variable names and credentials to what this repo actually uses.
+      # Container env beats .env files (dotenv does not override variables
+      # that are already set in the environment).
+      ZERO_UPSTREAM_DB: postgresql://user:password@${templateOption:dbService}:5432/postgres
+    depends_on:
+      ${templateOption:dbService}:
+        # Requires a healthcheck on the service; change to `service_started`
+        # if the repo's Compose file does not define one.
+        condition: service_healthy

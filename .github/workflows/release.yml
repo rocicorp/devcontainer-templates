@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write # push the per-template git tags (template_<id>_<version>)
   packages: write
 
 jobs:

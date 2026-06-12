@@ -1,5 +1,10 @@
 # Next steps
 
+Open the repo with **"Dev Containers: Clone Repository in Container
+Volume…"** — the workspace deliberately has no host bind mounts, so the
+host needs only Docker + VS Code (no git checkout, no Node). The source
+lives in the repo volume at `/workspaces` and is edited through VS Code.
+
 1. In `.devcontainer/docker-compose.yml`, set the `environment:` entries to
    the connection strings your app actually reads (host = the Compose
    service name, port = the *container* port, not the host-published one).

@@ -17,8 +17,11 @@ services:
   dev:
     image: mcr.microsoft.com/devcontainers/javascript-node:${templateOption:nodeVersion}
     command: sleep infinity
-    volumes:
-      - ..:/workspaces/${templateOption:appName}:cached
+    # No host bind mounts on purpose: open the repo with "Dev Containers:
+    # Clone Repository in Container Volume…", which mounts the cloned repo
+    # volume at /workspaces. A `..:/workspaces/<app>` host bind would break
+    # that flow on a machine with no host checkout, and host-side tooling
+    # does not inject a workspace mount for Compose dev containers.
     environment:
       # Point the app at the sibling services by service name. Adjust the
       # variable names and credentials to what this repo actually uses.

@@ -1,6 +1,6 @@
 {
   "id": "sibling-services",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Rocicorp Node workspace + sibling Compose services",
   "description": "Node.js dev container that runs the repo's existing docker-compose services (e.g. Postgres) as sibling containers. The workspace reaches them over the Compose network by service name but has no Docker daemon and no host Docker socket.",
   "documentationURL": "https://github.com/rocicorp/devcontainer-templates/tree/main/src/sibling-services",

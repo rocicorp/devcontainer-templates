@@ -45,9 +45,11 @@ npx @devcontainers/cli templates apply --workspace-folder . \
 
 Then edit the `environment:` block in the generated
 `.devcontainer/docker-compose.yml` to the env vars your app reads (host =
-Compose service name, port = container port), and open the repo in the
-container. `db-up`-style scripts are not needed (and don't work) inside the
-workspace — the services are already running.
+Compose service name, port = container port), and open the repo with
+**"Dev Containers: Clone Repository in Container Volume…"** — the workspace
+has no host bind mounts, so a machine needs only Docker + VS Code (no host
+git or Node). `db-up`-style scripts are not needed (and don't work) inside
+the workspace — the services are already running.
 
 Both templates can also be applied from the VS Code / Dev Containers UI:
 "Add Dev Container Configuration Files…" and search for the template id.

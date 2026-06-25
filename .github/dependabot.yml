@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "devcontainers"
+    directories:
+      - "/src/node"
+      - "/src/sibling-services"
+    schedule:
+      interval: "weekly"
+    groups:
+      devcontainer-features:
+        patterns: ["*"]

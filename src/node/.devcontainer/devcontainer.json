@@ -11,9 +11,9 @@
   "remoteUser": "node",
   "features": {
     // Shared rocicorp features (https://github.com/rocicorp/devcontainer-features):
-    //  - agents: Codex (pinned) + Claude Code + gh; persists logins across rebuilds.
+    //  - agents: Codex (pinned) + Claude Code; persists logins across rebuilds.
     //  - pnpm: corepack-managed pnpm; removes npm/npx to enforce pnpm.
-    "ghcr.io/rocicorp/devcontainer-features/agents:1": {},
+    "ghcr.io/rocicorp/devcontainer-features/agents:3": {},
     "ghcr.io/rocicorp/devcontainer-features/pnpm:1": {}
   },
   "postCreateCommand": "pnpm install"
